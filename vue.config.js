@@ -6,7 +6,7 @@ function resolve (dir) {
 
 module.exports = {
   devServer: {
-    port: 8080 // 端口自己改
+    port: 8686 // 端口自己改
   },
   chainWebpack: config => {
     // 这里是对环境的配置，不同环境对应不同的BASE_API，以便axios的请求地址不同

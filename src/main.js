@@ -11,9 +11,12 @@ import './plugins/element.js'
 // icon 引入
 import '@/icons'
 
+import store from '@/store/index'
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
