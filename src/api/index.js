@@ -5,19 +5,9 @@ import { Message } from 'element-ui'
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
-// 环境切换
-if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = '本地环境'
-} else if (process.env.NODE_ENV === 'test') {
-  axios.defaults.baseURL = '测试环境'
-} else if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = '部署环境'
-}
-
 // 创建axios 实例
 const service = axios.create({
-  // baseURL: process.env.BASE_API, // api的base_url
+  baseURL: process.env.BASE_API, // api的base_url
   timeout: 5000 // 请求超时时间
 })
 
