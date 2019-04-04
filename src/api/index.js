@@ -7,7 +7,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 // 创建axios 实例
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
+  baseURL: process.env.VUE_APP_BASE_URL, // api的base_url
   timeout: 5000 // 请求超时时间
 })
 
