@@ -8,7 +8,6 @@ const user = {
   },
   mutations: {
     [types.TEST] (state, payload) {
-      debugger
       state.count++
     }
   },
