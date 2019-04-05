@@ -17,13 +17,12 @@
       text-color="#fff"
       active-text-color="#116BBE"
       :collapse="getMenuCollapse"
-      router
-      @select="handleSelect">
+      router>
       <div
         v-for="menu of menus"
         :key="menu.code">
         <el-submenu
-          v-if="menu.children"
+          v-if="menu.children.length > 0"
           :index="`${menu.path}`"
         >
           <template slot="title">
@@ -73,25 +72,42 @@ export default {
   name: 'LeftBar',
   data () {
     return {
-      menus: MENU,
+      menus: [],
       defaultActive: '',
       isCollapse: true
     }
   },
   created () {
     this.defaultActive = this.$route.path
+    setTimeout(() => {
+      this.menus = MENU
+      let Menu = []
+      const permissions = [[1001000, 1001002], [1002000, 1002001]]
+      this.menus.forEach((value, index) => {
+        if (permissions.length - 1 < index) {
+          return
+        }
+        if (permissions[index][0] === value.code) {
+          Menu.push({
+            name: value.name,
+            path: value.path,
+            children: []
+          })
+          value.children.forEach((value1, index1) => {
+            if (value1.code === permissions[index][index1]) {
+              Menu[index].children.push({
+                name: value1.name,
+                path: value1.path
+              })
+            }
+          })
+        }
+      })
+      this.menus = Menu
+    }, 500)
   },
   computed: {
     ...mapGetters(['getMenuCollapse'])
-  },
-  methods: {
-    handleSelect (key, keyPath) {
-      for (let i = 0; i < this.menus.length; i++) {
-        if (this.menus[i].id === key) {
-          this.$router.push(this.menus[i].path)
-        }
-      }
-    }
   },
   mounted () {
     console.log(MENU)

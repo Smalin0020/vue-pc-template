@@ -22,7 +22,7 @@ const MENU = [
 
   {
     name: '关于',
-    path: '/about',
+    path: '/about/1-1',
     icon: 'main',
     code: 1002000,
     children: [
@@ -35,6 +35,12 @@ const MENU = [
     ]
   },
 
+  {
+    name: '我们',
+    path: '/us',
+    icon: 'main',
+    code: 1003000
+  },
   {
     name: '我们',
     path: '/us',

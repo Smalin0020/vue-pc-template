@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   // ...
   NProgress.done()
-  console.log(to)
+  console.log(to, 666)
   console.log(from)
 })
 
