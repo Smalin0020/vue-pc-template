@@ -1,6 +1,6 @@
 const MENU = [
   {
-    name: '首页',
+    name: '首页页面',
     path: '/main',
     icon: 'main',
     code: 1001000,
@@ -31,6 +31,12 @@ const MENU = [
         path: '/about/1-1',
         icon: 'main',
         code: 1002001
+      },
+      {
+        name: '关于2',
+        path: '/about/1-2',
+        icon: 'main',
+        code: 1002002
       }
     ]
   },

@@ -17,13 +17,15 @@
       text-color="#fff"
       active-text-color="#116BBE"
       :collapse="getMenuCollapse"
-      router>
-      <div
-        v-for="menu of menus"
-        :key="menu.code">
+      @open="handleOpen"
+      @close="handleClose"
+      router
+    >
         <el-submenu
-          v-if="Array.isArray(menu.children)"
+          v-for="menu of menus"
+          :key="menu.code"
           :index="`${menu.path}`"
+          v-if="Array.isArray(menu.children)"
         >
           <template slot="title">
             <svg-icon
@@ -32,31 +34,28 @@
             />
             <span slot="title">{{ menu.name }}</span>
           </template>
-          <el-menu-item-group
-              v-for="childrenMenu of menu.children"
-              :key="childrenMenu.code">
-            <el-menu-item
-              :index="`${childrenMenu.path}`"
-            >
-              <svg-icon
-                class="svg-icon-style"
-                :icon-class="childrenMenu.icon"
-              />
-              <span slot="title">{{ childrenMenu.name }}</span>
-            </el-menu-item>
-          </el-menu-item-group>
-          </el-submenu>
           <el-menu-item
-            v-else
-            :index="`${menu.path}`"
+            v-for="childrenMenu of menu.children"
+            :key="childrenMenu.code"
+            :index="`${childrenMenu.path}`"
           >
             <svg-icon
               class="svg-icon-style"
-              :icon-class="menu.icon"
+              :icon-class="childrenMenu.icon"
             />
-            <span slot="title">{{ menu.name }}</span>
+            <span slot="title">{{ childrenMenu.name }}</span>
         </el-menu-item>
-      </div>
+      </el-submenu>
+      <el-menu-item
+        v-else
+        :index="`${menu.path}`"
+      >
+        <svg-icon
+          class="svg-icon-style"
+          :icon-class="menu.icon"
+        />
+        <span slot="title">{{ menu.name }}</span>
+      </el-menu-item>
     </el-menu>
 </div>
 </template>
@@ -88,6 +87,12 @@ export default {
     this.inPermissionsGetMenus(this.menus)
   },
   methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    },
     inPermissionsGetMenus (array) {
       array.forEach((value, index) => {
         if (Array.isArray(value.children)) {
