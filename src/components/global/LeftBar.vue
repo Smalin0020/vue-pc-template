@@ -22,7 +22,7 @@
         v-for="menu of menus"
         :key="menu.code">
         <el-submenu
-          v-if="menu.children.length > 0"
+          v-if="Array.isArray(menu.children)"
           :index="`${menu.path}`"
         >
           <template slot="title">
@@ -32,10 +32,10 @@
             />
             <span slot="title">{{ menu.name }}</span>
           </template>
-          <el-menu-item-group>
-            <el-menu-item
+          <el-menu-item-group
               v-for="childrenMenu of menu.children"
-              :key="childrenMenu.code"
+              :key="childrenMenu.code">
+            <el-menu-item
               :index="`${childrenMenu.path}`"
             >
               <svg-icon
@@ -74,37 +74,30 @@ export default {
     return {
       menus: [],
       defaultActive: '',
+      arr: [],
       isCollapse: true
     }
   },
   created () {
     this.defaultActive = this.$route.path
-    setTimeout(() => {
-      this.menus = MENU
-      let Menu = []
-      const permissions = [[1001000, 1001002], [1002000, 1002001]]
-      this.menus.forEach((value, index) => {
-        if (permissions.length - 1 < index) {
-          return
+    this.menus = MENU
+    let res = [[1001000, 1001001], [1002000, 1002001], 1003000]
+    // 数组扁平化
+    this.permissions = [].concat(...res)
+    // 根据权限递归调用
+    this.inPermissionsGetMenus(this.menus)
+  },
+  methods: {
+    inPermissionsGetMenus (array) {
+      array.forEach((value, index) => {
+        if (Array.isArray(value.children)) {
+          this.inPermissionsGetMenus(value.children)
         }
-        if (permissions[index][0] === value.code) {
-          Menu.push({
-            name: value.name,
-            path: value.path,
-            children: []
-          })
-          value.children.forEach((value1, index1) => {
-            if (value1.code === permissions[index][index1]) {
-              Menu[index].children.push({
-                name: value1.name,
-                path: value1.path
-              })
-            }
-          })
+        if (!this.permissions.includes(value.code)) {
+          array.splice(index, 1)
         }
       })
-      this.menus = Menu
-    }, 500)
+    }
   },
   computed: {
     ...mapGetters(['getMenuCollapse'])

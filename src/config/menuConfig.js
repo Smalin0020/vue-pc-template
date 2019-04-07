@@ -34,13 +34,6 @@ const MENU = [
       }
     ]
   },
-
-  {
-    name: '我们',
-    path: '/us',
-    icon: 'main',
-    code: 1003000
-  },
   {
     name: '我们',
     path: '/us',

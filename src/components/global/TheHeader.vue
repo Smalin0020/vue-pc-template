@@ -46,11 +46,9 @@ export default {
       getBreadcrumbItems: [
         {
           name: '首页',
-          path: '/main',
-          icon: 'main',
-          code: 1001000
+          path: '/main'
         }, {
-          name: '首页1-1',
+          name: '首页1-2',
           path: '/main/1-1'
         }]
     }
