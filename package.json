@@ -4,16 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test": "vue-cli-service serve --project-mode test",
+    "serve:test": "vue-cli-service serve --mode test",
+    "serve:pre-release": "vue-cli-service serve --mode pre-release",
+    "serve:production": "vue-cli-service serve --mode production",
     "lint": "vue-cli-service lint",
-    "build:dev": "vue-cli-service build --project-mode dev",
-    "build:pre": "vue-cli-service build --project-mode pre",
-    "build:pro": "vue-cli-service build --project-mode pro",
-    "build:test": "vue-cli-service build --project-mode test",
-    "dev": "vue-cli-service serve --project-mode dev",
-    "pre": "vue-cli-service serve --project-mode pre",
-    "pro": "vue-cli-service serve --project-mode pro"
+    "build": "vue-cli-service build",
+    "build:develop": "vue-cli-service build --mode develop",
+    "build:test": "vue-cli-service build --mode test",
+    "build:pre": "vue-cli-service build --mode pre"
   },
   "dependencies": {
     "element-ui": "^2.7.2",
