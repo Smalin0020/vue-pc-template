@@ -19,7 +19,12 @@ const MENU = [
       }
     ]
   },
-
+  {
+    name: '我们',
+    path: '/us',
+    icon: 'main',
+    code: 1003000
+  },
   {
     name: '关于',
     path: '/about/1-1',
@@ -39,34 +44,7 @@ const MENU = [
         code: 1002002
       }
     ]
-  },
-  {
-    name: '我们',
-    path: '/us',
-    icon: 'main',
-    code: 1003000
   }
 ]
 
 export default MENU
-// let newMenu = []
-// getMenu()
-// // export default MENU
-// function getMenu () {
-//   let menuArray = [1001001, 1002001]
-//   for (let i = 0; i < menuArray.length; i++) {
-//     recursive(MENU, menuArray[i])
-//   }
-//   console.log(newMenu, 123)
-// }
-
-// function recursive (menu, code) {
-//   const length = menu.length
-//   for (let i = 0; i < length; i++) {
-//     if (menu[i].children) {
-//       recursive(menu[i].children, code)
-//     } else if (menu[i].code === code) {
-//       newMenu.push(menu)
-//     }
-//   }
-// }

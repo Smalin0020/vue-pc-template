@@ -12,7 +12,7 @@ Vue.use(Router)
 const IndexRoute = {
   path: '',
   component: TheLayout,
-  // redirect: '/main/1-1',
+  redirect: '/main/1-1',
   children: []
 }
 
