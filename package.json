@@ -5,10 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "jest",
     "lint": "vue-cli-service lint",
-    "build:develop": "vue-cli-service build --mode develop",
-    "build:pre": "vue-cli-service build --mode pre",
+    "build:development": "vue-cli-service build --mode development",
+    "build:pre-release": "vue-cli-service build --mode pre-release",
     "build:test": "vue-cli-service build --mode test",
     "serve:pre-release": "vue-cli-service serve --mode pre-release",
     "serve:production": "vue-cli-service serve --mode production",
@@ -63,11 +62,6 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.{js,vue}",
-      "!**/node_modules/**"
-    ],
     "coverageReporters": [
       "html",
       "text-summary"
