@@ -6,15 +6,13 @@ function resolve (dir) {
 
 module.exports = {
   devServer: {
-    port: 8686 // 端口自己改
+    port: 1010, // 端口自己改
+    open: true
   },
   chainWebpack: config => {
     // 这里是对环境的配置，不同环境对应不同的BASE_API，以便axios的请求地址不同
     config.plugin('define').tap(args => {
-      const argv = process.argv
-      const mode = argv[argv.indexOf('--project-mode') + 1]
-      args[0]['process.env'].MODE = `"${mode}"`
-      args[0]['process.env'].BASE_API = '"啦啦啦啦"'
+      args[0]['process.env'].BASE_API = JSON.stringify(process.env.VUE_APP_BASE_URL)
       return args
     })
 

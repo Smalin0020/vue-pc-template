@@ -62,6 +62,7 @@
 
 <script>
 import MENU from '@/config/menuConfig'
+import { getUserInfo } from '@/api/user/index.js'
 /**
  * vuex
  */
@@ -119,6 +120,9 @@ export default {
     }
   },
   mounted () {
+    getUserInfo().then(response => {
+      console.log(response)
+    })
     console.log(MENU)
   }
 }

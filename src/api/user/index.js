@@ -1,8 +1,8 @@
-import request from '@/utils/request'
+import request from '@/api/index'
 
 export function getUserInfo () {
   return request({
-    url: '/getUserInfo',
+    url: '/test',
     method: 'post'
   })
 }

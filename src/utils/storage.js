@@ -12,6 +12,10 @@ export function setLocalStorage (key, value) {
   return localStorage.setItem(key, value)
 }
 
+export function removeLocalStorage (key) {
+  return localStorage.removeItem(key)
+}
+
 export function getSessionStorage (string) {
   return sessionStorage[string]
 }
